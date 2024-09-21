@@ -1,4 +1,4 @@
-package br.api.walletapi.usecases.interfaces;
+package br.api.walletapi.usecases;
 
 import br.api.walletapi.domain.entities.Wallet;
 

@@ -9,7 +9,6 @@ public class TransactionPin {
 
     // Attributes
     private Long id;
-    private User user;
     private String pin;
     private Integer attempt;
     private Boolean blocked;
@@ -17,7 +16,7 @@ public class TransactionPin {
     private LocalDateTime updateAt;
 
     // Builders
-    public TransactionPin(Long id, User user, String pin, Integer attempt, Boolean blocked, LocalDateTime createdAt
+    public TransactionPin(Long id, String pin, Integer attempt, Boolean blocked, LocalDateTime createdAt
             , LocalDateTime updateAt) {
         this.id = id;
         this.pin = pin;
@@ -27,8 +26,7 @@ public class TransactionPin {
         this.updateAt = updateAt;
     }
 
-    public TransactionPin(User user, String pin) throws TransactionPinException {
-        this.user = user;
+    public TransactionPin(String pin) throws TransactionPinException {
         setPin(pin);
         this.attempt = 3;
         this.blocked = false;
@@ -42,6 +40,10 @@ public class TransactionPin {
         if (pin.length() != 8) {
             throw new TransactionPinException(ErrorCodeEnum.TRP0001.getMessage(), ErrorCodeEnum.TRP0001.getCode());
         }
+    }
+
+    public void restaureAttempt(){
+        this.attempt = 3;
     }
 
     // Getters and Setters

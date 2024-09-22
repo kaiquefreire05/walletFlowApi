@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "api.expiration-time",
+      "type": "java.lang.String",
+      "description": "Description for api.expiration-time."
+    },
+    {
+      "name": "api.key",
+      "type": "java.lang.String",
+      "description": "Description for api.key."
+    }
+  ] }

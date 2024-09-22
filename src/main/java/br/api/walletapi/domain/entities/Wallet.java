@@ -37,6 +37,22 @@ public class Wallet {
     public Wallet() {
     }
 
+    // Methods
+    public void transfer(BigDecimal value) throws TransferException {
+        if (this.user.getType() == UserTypeEnum.SHOPKEEPER){
+            throw new TransferException(ErrorCodeEnum.TR0001.getCode(), ErrorCodeEnum.TR0001.getMessage());
+        }
+
+        if (this.balance.compareTo(value) < 0){
+            throw new TransferException(ErrorCodeEnum.TR0002.getCode(), ErrorCodeEnum.TR0002.getMessage());
+        }
+        this.balance.subtract(value);
+    }
+
+    public void receiveValue(BigDecimal value) {
+        this.balance.add(value);
+    }
+
     // Getters and Setters
     public Long getId() {
         return id;
@@ -48,21 +64,6 @@ public class Wallet {
 
     public BigDecimal getBalance() {
         return balance;
-    }
-
-    public void receiveValue(BigDecimal value) {
-        this.balance.add(value);
-    }
-
-    public void transfer(BigDecimal value) throws TransferException {
-        if (this.user.getType() == UserTypeEnum.SHOPKEEPER){
-            throw new TransferException(ErrorCodeEnum.TR0001.getCode(), ErrorCodeEnum.TR0001.getMessage());
-        }
-
-        if (this.balance.compareTo(value) < 0){
-            throw new TransferException(ErrorCodeEnum.TR0002.getCode(), ErrorCodeEnum.TR0002.getMessage());
-        }
-        this.balance.subtract(value);
     }
 
     public void receiveTransfer(BigDecimal value) {

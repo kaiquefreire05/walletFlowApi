@@ -1,7 +1,8 @@
 package br.api.walletapi.application.gateway;
 
 import br.api.walletapi.domain.entities.User;
+import br.api.walletapi.domain.entities.Wallet;
 
 public interface CreateUserGateway {
-    User create(User user);
+    Boolean create(User user, Wallet wallet);
 }

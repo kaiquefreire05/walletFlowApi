@@ -1,4 +1,4 @@
-package br.api.walletapi.application;
+package br.api.walletapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

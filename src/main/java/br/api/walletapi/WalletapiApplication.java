@@ -8,6 +8,7 @@ public class WalletapiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WalletapiApplication.class, args);
+
 	}
 
 }

@@ -16,7 +16,7 @@ public class TransactionPinEntity {
 
     @Column(name = "Id")
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "Pin", nullable = false)
@@ -31,7 +31,17 @@ public class TransactionPinEntity {
     @Column(name = "CreatedAt", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "UpdatedAt", nullable = false)
+    @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt;
 
+    // Builder
+
+    public TransactionPinEntity(String pin, Boolean blocked, Integer attempt, LocalDateTime createdAt
+            , LocalDateTime updatedAt) {
+        this.pin = pin;
+        this.blocked = blocked;
+        this.attempt = attempt;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

@@ -6,6 +6,7 @@ import br.api.walletapi.usecases.TaxNumberAvailableUseCase;
 public class TaxNumberAvailableImpl implements TaxNumberAvailableUseCase {
     // Dependencies Injection
     private TaxNumberAvailableGateway _taxNumberAvailableGateway;
+
     public TaxNumberAvailableImpl(TaxNumberAvailableGateway taxNumberAvailableGateway) {
         _taxNumberAvailableGateway = taxNumberAvailableGateway;
     }

@@ -1,0 +1,6 @@
+package br.api.walletapi.insfrastructure.dto.response;
+
+import java.math.BigDecimal;
+
+public record ConsultBalanceResponse (BigDecimal balance) {
+}

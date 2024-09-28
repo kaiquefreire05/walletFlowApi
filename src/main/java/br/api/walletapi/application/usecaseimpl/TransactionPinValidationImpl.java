@@ -10,8 +10,8 @@ import br.api.walletapi.usecases.UpdateTransactionalPinUseCase;
 
 public class TransactionPinValidationImpl implements TransactionPinValidationUseCase {
     // Dependencies Injection
-    private final TransactionPinValidationGateway _transactionPinValidationGateway;
-    private final UpdateTransactionalPinUseCase _updateTransactionalPinUseCase;
+    private TransactionPinValidationGateway _transactionPinValidationGateway;
+    private UpdateTransactionalPinUseCase _updateTransactionalPinUseCase;
 
     public TransactionPinValidationImpl(TransactionPinValidationGateway transactionPinValidationGateway
             , UpdateTransactionalPinUseCase updateTransactionalPinUseCase) {

@@ -9,7 +9,7 @@ import static br.api.walletapi.insfrastructure.utils.Utilies.log;
 @Service
 public class EmailAvailableGatewayImpl implements EmailAvailableGateway {
     // Dependencies Injection
-    private final UserEntityRepository _userEntityRepository;
+    private UserEntityRepository _userEntityRepository;
 
     public EmailAvailableGatewayImpl(UserEntityRepository userEntityRepository) {
         _userEntityRepository = userEntityRepository;

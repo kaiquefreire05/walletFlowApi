@@ -8,13 +8,14 @@ import br.api.walletapi.usecases.CreateTransactionalUseCase;
 
 public class CreateTransactionalImpl implements CreateTransactionalUseCase {
     // Dependencies Injection
-    private final CreateTransactionalGateway _createTransactionalGateway;
+    private CreateTransactionalGateway _createTransactionalGateway;
     public CreateTransactionalImpl(CreateTransactionalGateway createTransactionalGateway) {
         _createTransactionalGateway = createTransactionalGateway;
     }
+
     // Method
     @Override
-    public Transaction create(Transaction transaction) throws TransferException {
+    public Transaction create(Transaction transaction) throws Exception {
         var newTransaction = _createTransactionalGateway.createTransaction(transaction);
         if (newTransaction == null) {
             throw new TransferException(ErrorCodeEnum.TR0003.getCode(), ErrorCodeEnum.TR0003.getMessage());

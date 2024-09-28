@@ -10,18 +10,19 @@ import br.api.walletapi.insfrastructure.mapper.WalletMapper;
 import br.api.walletapi.insfrastructure.repositories.TransactionPinEntityRepository;
 import br.api.walletapi.insfrastructure.repositories.UserEntityRepository;
 import br.api.walletapi.insfrastructure.repositories.WalletEntityRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import static br.api.walletapi.insfrastructure.utils.Utilies.log;
 
 @Service
 public class CreateUserGatewayImpl implements CreateUserGateway {
     // Dependencies Injection
-    private final UserEntityRepository _userEntityRepository;
-    private final TransactionPinEntityRepository _transactionPinEntityRepository;
-    private final WalletEntityRepository _walletEntityRepository;
-    private final UserMapper _userMapper;
-    private final TransactionPinMapper _transactionPinMapper;
-    private final WalletMapper _walletMapper;
+    private UserEntityRepository _userEntityRepository;
+    private TransactionPinEntityRepository _transactionPinEntityRepository;
+    private WalletEntityRepository _walletEntityRepository;
+    private UserMapper _userMapper;
+    private TransactionPinMapper _transactionPinMapper;
+    private WalletMapper _walletMapper;
 
     public CreateUserGatewayImpl(UserEntityRepository userEntityRepository
             , TransactionPinEntityRepository transactionPinEntityRepository, WalletEntityRepository walletEntityRepository
@@ -36,6 +37,7 @@ public class CreateUserGatewayImpl implements CreateUserGateway {
 
     // Method
     @Override
+    @Transactional
     public Boolean create(User user, Wallet wallet) {
 
         try {

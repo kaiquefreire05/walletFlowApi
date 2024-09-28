@@ -7,5 +7,5 @@ import java.math.BigDecimal;
 
 public interface TransferUseCase {
     Boolean transfer(String toTaxNumber, String fromTaxNumber, BigDecimal value, String pin)
-            throws InternalServerErrorException, TransferException, NotFoundException, NotificationException, PinException;
+            throws Exception;
 }

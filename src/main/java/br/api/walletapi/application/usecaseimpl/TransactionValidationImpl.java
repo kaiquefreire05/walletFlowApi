@@ -8,7 +8,7 @@ import br.api.walletapi.usecases.TransactionValidationUseCase;
 
 public class TransactionValidationImpl implements TransactionValidationUseCase {
     // Dependencies Injection
-    private final TransactionValidationGateway _transactionValidationGateway;
+    private TransactionValidationGateway _transactionValidationGateway;
 
     public TransactionValidationImpl(TransactionValidationGateway transactionValidationGateway) {
         _transactionValidationGateway = transactionValidationGateway;

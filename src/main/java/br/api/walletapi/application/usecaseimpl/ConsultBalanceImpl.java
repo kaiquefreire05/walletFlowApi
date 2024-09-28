@@ -1,22 +1,23 @@
 package br.api.walletapi.application.usecaseimpl;
 
-import br.api.walletapi.application.gateway.ConsultBalanceGateway;
-import br.api.walletapi.domain.entities.Wallet;
+import br.api.walletapi.domain.exceptions.NotFoundException;
 import br.api.walletapi.usecases.ConsultBalanceUseCase;
+import br.api.walletapi.usecases.FindWalletByTaxNumberUseCase;
 
 import java.math.BigDecimal;
 
 public class ConsultBalanceImpl implements ConsultBalanceUseCase {
     // Dependencies Injection
-    private final ConsultBalanceGateway _consultBalanceGateway;
+    private FindWalletByTaxNumberUseCase _findWalletByTaxNumberUseCase;
 
-    public ConsultBalanceImpl(ConsultBalanceGateway consultBalanceGateway) {
-        _consultBalanceGateway = consultBalanceGateway;
+    public ConsultBalanceImpl(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase) {
+        _findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
     }
 
     // Methods
     @Override
-    public BigDecimal consultBalance(Wallet wallet) {
-        return _consultBalanceGateway.consultBalance(wallet);
+    public BigDecimal consultBalance(String taxNumber) throws Exception {
+        var walletFound = _findWalletByTaxNumberUseCase.findByTaxNumber(taxNumber);
+        return walletFound.getBalance();
     }
 }

@@ -7,7 +7,7 @@ import br.api.walletapi.usecases.UserAuthenticateUseCase;
 
 public class UserAuthenticateImpl implements UserAuthenticateUseCase {
     // Dependencies Injection
-    private final UserAuthenticateGateway _userAuthenticateGateway;
+    private UserAuthenticateGateway _userAuthenticateGateway;
 
     public UserAuthenticateImpl(UserAuthenticateGateway userAuthenticateGateway) {
         _userAuthenticateGateway = userAuthenticateGateway;

@@ -14,8 +14,8 @@ import static br.api.walletapi.insfrastructure.utils.Utilies.log;
 @RequestMapping("api/v1/user")
 public class UserController {
     // Dependencies Injection
-    private final CreateUserUseCase _createUserUseCase;
-    private final UserMapper _userMapper;
+    private CreateUserUseCase _createUserUseCase;
+    private UserMapper _userMapper;
 
     public UserController(CreateUserUseCase createUserUseCase, UserMapper userMapper) {
         _createUserUseCase = createUserUseCase;

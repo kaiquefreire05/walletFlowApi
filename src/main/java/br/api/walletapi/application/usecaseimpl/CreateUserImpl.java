@@ -15,9 +15,9 @@ import java.math.BigDecimal;
 
 public class CreateUserImpl implements CreateUserUseCase {
     // Dependencies Injection
-    private final TaxNumberAvailableUseCase _taxNumberAvailableUseCase;
-    private final EmailAvailableUseCase _emailAvailableUseCase;
-    private final CreateUserGateway _createUserGateway;
+    private TaxNumberAvailableUseCase _taxNumberAvailableUseCase;
+    private EmailAvailableUseCase _emailAvailableUseCase;
+    private CreateUserGateway _createUserGateway;
 
     public CreateUserImpl(TaxNumberAvailableUseCase taxNumberAvailableUseCase
             , EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway) {

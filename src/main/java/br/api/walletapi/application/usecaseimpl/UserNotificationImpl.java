@@ -6,7 +6,7 @@ import br.api.walletapi.usecases.UserNotificationUseCase;
 
 public class UserNotificationImpl implements UserNotificationUseCase {
     // Dependencies Injection
-    private final UserNotificationGateway _userNotificationGateway;
+    private UserNotificationGateway _userNotificationGateway;
 
     public UserNotificationImpl(UserNotificationGateway userNotificationGateway) {
         _userNotificationGateway = userNotificationGateway;

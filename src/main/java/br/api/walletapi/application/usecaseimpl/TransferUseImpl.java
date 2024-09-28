@@ -11,18 +11,18 @@ import java.math.BigDecimal;
 
 public class TransferUseImpl implements TransferUseCase {
     // Dependencies Injection
-    private final FindWalletByTextNumberUseCase _findWalletByTextNumberUseCase;
-    private final TransactionValidationUseCase _transactionValidationUseCase;
-    private final CreateTransactionalUseCase _createTransactionalUseCase;
-    private final TransferUseGateway _transferGateway;
-    private final UserNotificationUseCase _userNotificationUseCase;
-    private final TransactionPinValidationUseCase _transactionPinValidationUseCase;
+    private FindWalletByTaxNumberUseCase _findWalletByTaxNumberUseCase;
+    private TransactionValidationUseCase _transactionValidationUseCase;
+    private CreateTransactionalUseCase _createTransactionalUseCase;
+    private TransferUseGateway _transferGateway;
+    private UserNotificationUseCase _userNotificationUseCase;
+    private TransactionPinValidationUseCase _transactionPinValidationUseCase;
 
-    public TransferUseImpl(FindWalletByTextNumberUseCase findWalletByTextNumberUseCase
+    public TransferUseImpl(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase
             , TransactionValidationUseCase transactionValidationUseCase
             , CreateTransactionalUseCase createTransactionalUseCase, TransferUseGateway transferGateway
             , UserNotificationUseCase userNotificationUseCase, TransactionPinValidationUseCase transactionPinValidationUseCase) {
-        _findWalletByTextNumberUseCase = findWalletByTextNumberUseCase;
+        _findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
         _transactionValidationUseCase = transactionValidationUseCase;
         _createTransactionalUseCase = createTransactionalUseCase;
         _transferGateway = transferGateway;
@@ -33,10 +33,10 @@ public class TransferUseImpl implements TransferUseCase {
     // Method
     @Override
     public Boolean transfer(String toTaxNumber, String fromTaxNumber, BigDecimal value, String pin)
-            throws InternalServerErrorException, TransferException, NotFoundException, NotificationException, PinException {
+            throws Exception {
 
-        Wallet from = _findWalletByTextNumberUseCase.findByTaxNumber(fromTaxNumber);
-        Wallet to = _findWalletByTextNumberUseCase.findByTaxNumber(toTaxNumber);
+        Wallet from = _findWalletByTaxNumberUseCase.findByTaxNumber(fromTaxNumber);
+        Wallet to = _findWalletByTaxNumberUseCase.findByTaxNumber(toTaxNumber);
 
         from.transfer(value);
         to.receiveValue(value);

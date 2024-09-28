@@ -9,7 +9,7 @@ import static br.api.walletapi.insfrastructure.utils.Utilies.log;
 @Service
 public class TaxNumberAvailableGatewayImpl implements TaxNumberAvailableGateway {
     // Dependencies Injection
-    private final UserEntityRepository _userEntityRepository;
+    private UserEntityRepository _userEntityRepository;
 
     public TaxNumberAvailableGatewayImpl(UserEntityRepository userEntityRepository) {
         _userEntityRepository = userEntityRepository;

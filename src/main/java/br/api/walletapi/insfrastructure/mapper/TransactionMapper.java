@@ -47,20 +47,21 @@ public class TransactionMapper {
             _walletMapper.toWalletEntityUpdate(transaction.getToWallet()),
             transaction.getValue(),
             TransactionStatusEnum.SUCCESS,
-            transaction.getUpdatedAt(),
-            transaction.getCreatedAt()
+            transaction.getCreatedAt(),
+            transaction.getUpdatedAt()
         );
     }
 
     public TransactionEntity cancelTransaction(Transaction transaction) {
         return new TransactionEntity(
+
             transaction.getId(),
             _walletMapper.toWalletEntityUpdate(transaction.getFromWallet()),
             _walletMapper.toWalletEntityUpdate(transaction.getToWallet()),
             transaction.getValue(),
             TransactionStatusEnum.CANCELED,
-            transaction.getUpdatedAt(),
-            transaction.getCreatedAt()
+            transaction.getCreatedAt(),
+            transaction.getUpdatedAt()
         );
     }
 }

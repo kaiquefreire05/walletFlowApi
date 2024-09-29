@@ -38,7 +38,7 @@ public class TransferGatewayImpl implements TransferUseGateway {
 
         } catch (Exception ex) {
             _transactionEntityRepository.save(_transactionMapper.cancelTransaction(transaction));
-            return null;
+            return false;
         }
     }
 }

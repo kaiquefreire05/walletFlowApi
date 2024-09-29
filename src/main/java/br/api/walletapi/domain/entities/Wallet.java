@@ -46,7 +46,7 @@ public class Wallet {
         if (this.balance.compareTo(value) < 0){
             throw new TransferException(ErrorCodeEnum.TR0002.getCode(), ErrorCodeEnum.TR0002.getMessage());
         }
-        this.balance.subtract(value);
+        this.balance = this.balance.subtract(value);
     }
 
     public void receiveValue(BigDecimal value) {
@@ -67,7 +67,7 @@ public class Wallet {
     }
 
     public void receiveTransfer(BigDecimal value) {
-        this.balance.add(value);
+        this.balance = this.balance.add(value);
     }
 
     public User getUser() {

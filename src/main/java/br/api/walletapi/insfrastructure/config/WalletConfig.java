@@ -27,8 +27,8 @@ public class WalletConfig {
     }
 
     @Bean
-    public UpdateTransactionalPinUseCase updateTransactionalPinUseCase() {
-        return new UpdateTransactionalPinImpl();
+    public UpdateTransactionalPinUseCase updateTransactionalPinUseCase(UpdateTransactionPinGateway updateTransactionPinGateway) {
+        return new UpdateTransactionalPinImpl(updateTransactionPinGateway);
     }
 
     @Bean
@@ -42,12 +42,13 @@ public class WalletConfig {
     }
 
     @Bean
-    public TransferUseCase transferUseCase(FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase
-            , TransactionValidationUseCase transactionValidationUseCase
-            , CreateTransactionalUseCase createTransactionalUseCase, TransferUseGateway transferGateway
-            , UserNotificationUseCase userNotificationUseCase, TransactionPinValidationUseCase transactionPinValidationUseCase) {
-        return new TransferUseImpl(findWalletByTaxNumberUseCase, transactionValidationUseCase
-                , createTransactionalUseCase, transferGateway, userNotificationUseCase, transactionPinValidationUseCase);
+    public TransferUseCase transferUseCase(TransferUseGateway transferGateway) {
+        return new TransferUseImpl(transferGateway);
+    }
+
+    @Bean
+    public TransactionValidationUseCase transactionValidationUseCase(TransactionValidationGateway transactionValidationGateway) {
+        return new TransactionValidationImpl(transactionValidationGateway);
     }
 
 }

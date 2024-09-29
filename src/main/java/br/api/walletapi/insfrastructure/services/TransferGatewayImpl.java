@@ -31,11 +31,11 @@ public class TransferGatewayImpl implements TransferUseGateway {
     @Transactional
     public Boolean transfer(Transaction transaction) {
         try {
-            _walletEntityRepository.save(_walletMapper.toWalletEntity(transaction.getFromWallet()));
-            _walletEntityRepository.save(_walletMapper.toWalletEntity(transaction.getToWallet()));
-
+            _walletEntityRepository.save(_walletMapper.toWalletEntityUpdate(transaction.getFromWallet()));
+            _walletEntityRepository.save(_walletMapper.toWalletEntityUpdate(transaction.getToWallet()));
             _transactionEntityRepository.save(_transactionMapper.concludeTransaction(transaction));
             return true;
+
         } catch (Exception ex) {
             _transactionEntityRepository.save(_transactionMapper.cancelTransaction(transaction));
             return null;

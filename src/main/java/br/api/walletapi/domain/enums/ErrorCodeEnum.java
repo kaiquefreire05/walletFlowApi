@@ -19,6 +19,7 @@ public enum ErrorCodeEnum {
     NO0001("There was an error in user notification", "NO-0001"),
 
     ATH0001("There was an error in authentication", "ATH-0001"),
+    ATH0002("Invalid request", "ATH-0002"),
 
     PIN0001("Transaction PIN blocked", "PIN-0001"),
     PIN0002("Incorrect PIN, %d attempt(s) remaining:", "PIN-0002"),

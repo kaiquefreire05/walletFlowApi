@@ -27,4 +27,16 @@ public class TransactionPinMapper {
                 transactionPinEntity.getUpdatedAt()
         );
     }
+
+    public TransactionPinEntity toTransactionPinEntityUpdate(TransactionPin transactionPin) {
+        return new TransactionPinEntity(
+            transactionPin.getId(),
+            transactionPin.getPin(),
+            transactionPin.getAttempt(),
+            transactionPin.getBlocked(),
+            transactionPin.getCreatedAt(),
+            transactionPin.getUpdateAt()
+        );
+    }
+
 }

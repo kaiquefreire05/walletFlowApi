@@ -17,12 +17,12 @@ import static br.api.walletapi.insfrastructure.utils.Utilies.log;
 @Service
 public class CreateUserGatewayImpl implements CreateUserGateway {
     // Dependencies Injection
-    private UserEntityRepository _userEntityRepository;
-    private TransactionPinEntityRepository _transactionPinEntityRepository;
-    private WalletEntityRepository _walletEntityRepository;
-    private UserMapper _userMapper;
-    private TransactionPinMapper _transactionPinMapper;
-    private WalletMapper _walletMapper;
+    private final UserEntityRepository _userEntityRepository;
+    private final TransactionPinEntityRepository _transactionPinEntityRepository;
+    private final WalletEntityRepository _walletEntityRepository;
+    private final UserMapper _userMapper;
+    private final TransactionPinMapper _transactionPinMapper;
+    private final WalletMapper _walletMapper;
 
     public CreateUserGatewayImpl(UserEntityRepository userEntityRepository
             , TransactionPinEntityRepository transactionPinEntityRepository, WalletEntityRepository walletEntityRepository

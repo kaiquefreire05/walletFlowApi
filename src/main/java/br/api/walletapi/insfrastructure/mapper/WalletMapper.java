@@ -38,6 +38,17 @@ public class WalletMapper {
         );
     }
 
+    public WalletEntity toWalletEntityUpdate(Wallet wallet) {
+        return new WalletEntity(
+                wallet.getId(),
+                wallet.getBalance(),
+                _userMapper.toUserEntity(wallet.getUser()),
+                _transactionPinMapper.toTransactionPinEntityUpdate(wallet.getTransactionPin()),
+                wallet.getCreatedAt(),
+                wallet.getUpdateAt()
+        );
+    }
+
     public Wallet toWallet(WalletEntity walletEntity) throws Exception {
         if (walletEntity == null){
             return null;

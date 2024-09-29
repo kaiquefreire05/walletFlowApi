@@ -15,14 +15,10 @@ import java.math.BigDecimal;
 
 public class CreateUserImpl implements CreateUserUseCase {
     // Dependencies Injection
-    private TaxNumberAvailableUseCase _taxNumberAvailableUseCase;
-    private EmailAvailableUseCase _emailAvailableUseCase;
-    private CreateUserGateway _createUserGateway;
 
-    public CreateUserImpl(TaxNumberAvailableUseCase taxNumberAvailableUseCase
-            , EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway) {
-        _taxNumberAvailableUseCase = taxNumberAvailableUseCase;
-        _emailAvailableUseCase = emailAvailableUseCase;
+    private final CreateUserGateway _createUserGateway;
+
+    public CreateUserImpl(CreateUserGateway createUserGateway) {
         _createUserGateway = createUserGateway;
     }
 
@@ -31,18 +27,9 @@ public class CreateUserImpl implements CreateUserUseCase {
     public void Create(User user, String pin) throws TaxNumberException, EmailException, TransactionPinException
             , InternalServerErrorException {
 
-        if (!_taxNumberAvailableUseCase.isTaxNumberAvailable(user.getTaxNumber().getValue())) {
-            throw new TaxNumberException(ErrorCodeEnum.ON0002.getMessage(), ErrorCodeEnum.ON0002.getCode());
-        }
-
-        if (!_emailAvailableUseCase.emailAvailable(user.getEmail())) {
-            throw new EmailException(ErrorCodeEnum.ON0003.getMessage(), ErrorCodeEnum.ON0003.getCode());
-        }
-
         boolean success = _createUserGateway.create(user, new Wallet(new TransactionPin(pin), BigDecimal.ZERO, user));
         if (!success) {
             throw new InternalServerErrorException(ErrorCodeEnum.ON0004.getMessage(), ErrorCodeEnum.ON0004.getCode());
         }
-
     }
 }

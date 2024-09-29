@@ -10,8 +10,8 @@ import br.api.walletapi.usecases.UpdateTransactionalPinUseCase;
 
 public class TransactionPinValidationImpl implements TransactionPinValidationUseCase {
     // Dependencies Injection
-    private TransactionPinValidationGateway _transactionPinValidationGateway;
-    private UpdateTransactionalPinUseCase _updateTransactionalPinUseCase;
+    private final TransactionPinValidationGateway _transactionPinValidationGateway;
+    private final UpdateTransactionalPinUseCase _updateTransactionalPinUseCase;
 
     public TransactionPinValidationImpl(TransactionPinValidationGateway transactionPinValidationGateway
             , UpdateTransactionalPinUseCase updateTransactionalPinUseCase) {
@@ -21,13 +21,13 @@ public class TransactionPinValidationImpl implements TransactionPinValidationUse
 
     // Method
     @Override
-    public Boolean validate(TransactionPin transactionPin) throws PinException {
+    public Boolean validate(TransactionPin transactionPin, String pin) throws PinException {
 
         if (transactionPin.getBlocked()) {
             throw new PinException(ErrorCodeEnum.PIN0001.getCode(), ErrorCodeEnum.PIN0001.getMessage());
         }
 
-        if (!_transactionPinValidationGateway.validate(transactionPin)) {
+        if (!_transactionPinValidationGateway.validate(transactionPin, pin)) {
             transactionPin.setAttempt();
             var transactionPinUpdated = _updateTransactionalPinUseCase.update(transactionPin);
             throw new PinException(ErrorCodeEnum.pin0002GetMessage(transactionPinUpdated.getAttempt())

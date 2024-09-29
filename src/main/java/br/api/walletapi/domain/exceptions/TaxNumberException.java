@@ -10,4 +10,9 @@ public class TaxNumberException extends Exception {
         this.code = code;
     }
 
+    // Getter
+    public String getCode() {
+        return code;
+    }
+
 }

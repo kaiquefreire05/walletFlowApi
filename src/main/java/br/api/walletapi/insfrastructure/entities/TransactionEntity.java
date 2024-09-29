@@ -27,7 +27,7 @@ public class TransactionEntity {
 
     @ManyToOne
     @JoinColumn(name = "ToWallet")
-    private WalletEntity ToWallet;
+    private WalletEntity toWallet;
 
     @Column(name = "TransactionalValue", nullable = false)
     private BigDecimal value;
@@ -49,6 +49,6 @@ public class TransactionEntity {
         this.status = status;
         this.value = value;
         this.fromWallet = fromWallet;
-        ToWallet = toWallet;
+        this.toWallet = toWallet;
     }
 }

@@ -5,5 +5,5 @@ import br.api.walletapi.domain.exceptions.PinException;
 import br.api.walletapi.domain.exceptions.TransferException;
 
 public interface TransactionPinValidationUseCase {
-    Boolean validate(TransactionPin transactionPin) throws TransferException, PinException;
+    Boolean validate(TransactionPin transactionPin, String pin) throws TransferException, PinException;
 }

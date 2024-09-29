@@ -10,4 +10,9 @@ public class TransferException extends Exception {
         this.code = code;
     }
 
+    // Getter
+    public String getCode() {
+        return code;
+    }
+
 }
